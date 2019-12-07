@@ -1,6 +1,8 @@
 #Librairie
 #install.packages("changepoint")
 #library("changepoint")
+#install.packages("corrplot")
+#library('corrplot')
 
 #Lecture des données
 donnees<-readRDS("./activation2020.Rdata")
@@ -33,7 +35,21 @@ abline(v=mean(donnees$Index_Lateralisation_Hemispherique), col=2, lwd=2)
 hist(donnees$Volume_Cerebral,main="Répartition de l'échantillon en fonction du volume cérébral", labels=TRUE, xlab="Volume cérébral")
 abline(v=mean(donnees$Volume_Cerebral), col=2, lwd=2)
 ###########################################################################################################################################################################################
+########################
+# Description générale #
+########################
 
+#Diagramme de corrélation
+donnees2<-donnees[,-c(1,2,3)]
+corrplot(cor(donnees2))
+#???corrélation entre les zones identiques entre droit et gauche
+
+# Activation des aires du cerveau
+donnees3<-donnees[,-c(1,2,3,4,5,6)]
+boxplot(donnees3)
+# différence sensible des boxplot entre les zones frontales droites et gauche uniquement
+boxplot(donnees$Prod_G_Frontal_Inf_Tri_1_R, donnees$Prod_G_Frontal_Inf_Tri_1_L) #différent
+boxplot(donnees$Prod_G_Rolandic_Oper_1_R, donnees$Prod_G_Rolandic_Oper_1_L)#identique
 
 #Statistiques descriptives
 plot(donnees[,5], main="Volume cérébrale")
