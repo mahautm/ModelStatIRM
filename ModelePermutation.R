@@ -76,7 +76,7 @@ order.MSE
 boxplot(GigaMSE[order.MSE])
 plot(mediane[order.MSE])
 abline(h=0.104)
-# les quatres dernière variables peuvent s'en aller car inutile
+# les quatres dernière variables peuvent être gardées
 
 obj<-cpt.mean(moyenne[order.MSE])
 summary(obj)
