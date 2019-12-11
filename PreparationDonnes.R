@@ -2,7 +2,7 @@
 #Il gère les librairies, et la préparation des variables.
 
 rm(list = ls())
-donnees <- readRDS("D:/alpha/Cours/ENSC2A/R/ModelStat2019/activation2020.Rdata")
+donnees <- readRDS("./activation2020.Rdata")
 install.packages("ClustOfVar")
 install.packages("PCAmixdata")
 
