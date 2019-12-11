@@ -7,8 +7,9 @@ head(donnees)
 summary(donnees)
 # Modèle complet, Homme & Femmes
 # On travail à la main étape par étape avec les p-values et les R²
-
-res <- lm(y~x1 + x2 + x3 + x4 + x5, data=matYX)
+#########################
+# Critère de Student
+#########################
 
 res<-lm(Prod_G_Frontal_Inf_Tri_1_L~Age + Volume_Cerebral + Index_Lateralisation_Hemispherique + Prod_G_Frontal_Inf_Tri_1_R + Prod_G_Angular_2_R + Prod_G_Occipital_Lat_1_R + Prod_G_Rolandic_Oper_1_R + Prod_G_Hippocampus_1_R + Prod_S_Sup_Temporal_4_R + Prod_G_Angular_2_L + Prod_G_Occipital_Lat_1_L + Prod_G_Rolandic_Oper_1_L + Prod_G_Hippocampus_1_L + Prod_S_Sup_Temporal_4_L, data = donnees)
 summary(res)
@@ -34,9 +35,17 @@ summary(res)
 res<-lm(Prod_G_Frontal_Inf_Tri_1_L~ Prod_G_Frontal_Inf_Tri_1_R + Prod_G_Hippocampus_1_R + Prod_S_Sup_Temporal_4_R + Prod_G_Angular_2_L + Prod_G_Rolandic_Oper_1_L + Prod_G_Hippocampus_1_L + Prod_S_Sup_Temporal_4_L, data = donnees)
 summary(res)
 
+
+#########################
+# Critère d'akaike
+#########################
 # On travail automatiquement avec les AIC et on compare
+# Version ascendante
 res<-lm(Prod_G_Frontal_Inf_Tri_1_L~1, data=donnees)
 model <- step(res, ~Age + Volume_Cerebral + Index_Lateralisation_Hemispherique + Prod_G_Frontal_Inf_Tri_1_R + Prod_G_Angular_2_R + Prod_G_Occipital_Lat_1_R + Prod_G_Rolandic_Oper_1_R + Prod_G_Hippocampus_1_R + Prod_S_Sup_Temporal_4_R + Prod_G_Angular_2_L + Prod_G_Occipital_Lat_1_L + Prod_G_Rolandic_Oper_1_L + Prod_G_Hippocampus_1_L + Prod_S_Sup_Temporal_4_L, trace=TRUE)
-  summary(model)
+summary(model)
 
-
+# Version descendante
+res2<-lm(Prod_G_Frontal_Inf_Tri_1_L~Age + Volume_Cerebral + Index_Lateralisation_Hemispherique + Prod_G_Frontal_Inf_Tri_1_R + Prod_G_Angular_2_R + Prod_G_Occipital_Lat_1_R + Prod_G_Rolandic_Oper_1_R + Prod_G_Hippocampus_1_R + Prod_S_Sup_Temporal_4_R + Prod_G_Angular_2_L + Prod_G_Occipital_Lat_1_L + Prod_G_Rolandic_Oper_1_L + Prod_G_Hippocampus_1_L + Prod_S_Sup_Temporal_4_L, data=donnees)
+model2 <- step(res2,trace=TRUE)
+summary(model2)
