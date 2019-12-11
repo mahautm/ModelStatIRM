@@ -1,3 +1,5 @@
+#install.packages("PCAmixdata")
+#library(PCAmixdata)
 
 #On commence par faire une analyse générale complète avec toutes les variables.
 res.pca<-PCAmix(X.quali = donnees[,c("Preference_Manuelle","Sexe")],
@@ -41,3 +43,6 @@ res.pca$quali$contrib.pct
 plot(res.pca, axes=c(1,2),choice = "ind")
 plot(res.pca, axes=c(1,2),choice = "cor")
 plot(res.pca, axes=c(1,2),choice = "levels")
+
+plot(res.pca, axes=c(3,4), choice = "ind")
+plot(res.pca, axes=c(3,4), choice = "cor")
