@@ -17,7 +17,7 @@ par(mfrow=c(1,2))
 plot(donnees[,4], ylab="Age")
 abline(h=mean(donnees[,4]), col=6)
 title(main="Age des sujets")
-hist(donnees[,4],main="Répartition de l'âge des sujets", labels=TRUE)
+hist(donnees[,4],main="Répartition de l'âge des sujets",xlab="Age des individus", labels=TRUE)
 
 # Sexe
 pie(table(donnees$Sexe), clockwise = TRUE, col=c("orange",'lightblue'))
@@ -46,10 +46,13 @@ corrplot(cor(donnees2))
 
 # Activation des aires du cerveau
 donnees3<-donnees[,-c(1,2,3,4,5,6)]
-boxplot(donnees3)
+boxplot(donnees3, col=c(7,2,3,4,5,6))
+title(main="Activité de chaque aire cérébrale")
 # différence sensible des boxplot entre les zones frontales droites et gauche uniquement
 boxplot(donnees$Prod_G_Frontal_Inf_Tri_1_R, donnees$Prod_G_Frontal_Inf_Tri_1_L) #différent
+title(main="Aire de Broca Droite (1) et Gauche (2)")
 boxplot(donnees$Prod_G_Rolandic_Oper_1_R, donnees$Prod_G_Rolandic_Oper_1_L)#identique
+title(main="Aire du Gyrus Rolandic Droit (1) et Gauche (2)")
 
 #Statistiques descriptives
 plot(donnees[,5], main="Volume cérébrale")
